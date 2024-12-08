@@ -1,16 +1,13 @@
 import React, { useRef, useState, memo, useCallback } from "react";
 import useProducts from "../Store/Store";
 import Popup from "./Popup";
-import cartMusic from "../assets/addedTocart.wav";
 
 const ProductDiv = memo(({ imgSrc, title, price }) => {
-  const { cart, addToCart } = useProducts();
+  const { addToCart } = useProducts();
   const [showPopup, setShowPopup] = useState(false);
   const [cartActive, setCartActive] = useState(true);
-  const audioPlay = useRef(null);
 
   const cartHandler = useCallback(() => {
-    audioPlay.current.play();
     setCartActive(false);
     addToCart({ title, url: imgSrc, price });
     setShowPopup(true);
@@ -22,7 +19,6 @@ const ProductDiv = memo(({ imgSrc, title, price }) => {
     <>
       {showPopup && <Popup url={imgSrc} />}
       <div className="text-black bg-[#F3F3F3] overflow-hidden flex justify-between flex-col rounded-lg md:py-2 py-1 md:px-2 px-1 md:w-[250px] w-[190px] md:h-[400px] h-[304px] relative">
-        <audio src={cartMusic} ref={audioPlay} preload="auto"></audio>
         {cartActive && (
           <button
             className="absolute z-20 right-2 bg-white transition hover:bg-[#CCF493] hover:scale-125 flex items-center px-[6px] py-[6px] text-lg rounded-[50%]"
