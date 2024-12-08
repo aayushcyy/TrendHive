@@ -1,30 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import ProductDiv from "./ProductDiv";
-import useProducts from "../Store/Store";
 import Footer from "./Footer";
 import Loader from "./Loader";
 import image40 from "../assets/40off.png";
 import productsLocal from "./Products";
 import Marquee from "./Marquee";
-import Popup from "./Popup";
 
 function Home() {
-  const { products, loading, error, fetchProducts } = useProducts();
-  const [showLoader, setShowLoader] = useState(true);
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true);
 
+  //loading method
   useEffect(() => {
-    fetchProducts();
     const loadingTime = Math.floor(Math.random() * 4);
-    console.log(loadingTime);
     const timer = setTimeout(() => {
-      setShowLoader(false);
+      setIsLoaderVisible(false);
     }, loadingTime * 1000);
     return () => clearTimeout(timer);
-  }, [fetchProducts]);
+  }, []);
 
-  if (loading || showLoader) return <Loader />;
-  if (error) return <p>Error: {error}</p>;
+  if (isLoaderVisible) return <Loader />;
 
   return (
     <div className="w-full">
