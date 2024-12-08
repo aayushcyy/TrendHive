@@ -18,7 +18,7 @@ const ProductDiv = memo(({ imgSrc, title, price }) => {
   return (
     <>
       {showPopup && <Popup url={imgSrc} />}
-      <div className="text-black bg-[#F3F3F3] overflow-hidden flex justify-between flex-col rounded-lg md:py-2 py-1 md:px-2 px-1 md:w-[250px] w-[190px] md:h-[400px] h-[304px] relative">
+      <div className="text-black bg-[#F3F3F3] overflow-hidden flex justify-between flex-col rounded-lg md:py-2 py-1 md:px-2 px-1 md:w-[250px] w-[180px] md:h-[400px] h-[304px] relative">
         {cartActive && (
           <button
             className="absolute z-20 right-2 bg-white transition hover:bg-[#CCF493] hover:scale-125 flex items-center px-[6px] py-[6px] text-lg rounded-[50%]"
@@ -32,19 +32,23 @@ const ProductDiv = memo(({ imgSrc, title, price }) => {
             <i class="ri-check-fill"></i>
           </button>
         )}
-        <div className="rounded-lg overflow-hidden md:w-[234px] w-[182px] md:h-[300px] h-[290px] mb-2 relative">
+        <div className="rounded-lg overflow-hidden md:w-[234px] w-[172px] md:h-[300px] h-[290px] mb-2 relative">
           <img
             className="absolute inset-0 w-full h-full object-cover"
             src={imgSrc}
             alt=""
           />
         </div>
-        <div className="w-full h-14">
-          <p className="mb-3 text-[18px] leading-6 font-semibold">{title}</p>
+        <div className="w-full md:h-14 h-12">
+          <p className="mb-3 md:text-[18px] text-[15px] leading-6 font-semibold">
+            {title}
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="text-gray-600 font-semibold">{price}</p>
-          <p>
+          <p className="text-gray-600 font-semibold md:text-[18px] text-[15px]">
+            {price}
+          </p>
+          <p className="md:text-[18px] text-[15px]">
             Buy Now <i class="ri-arrow-right-up-line"></i>
           </p>
         </div>
