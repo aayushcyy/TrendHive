@@ -1,4 +1,4 @@
-import React, { useRef, useState, memo, useCallback } from "react";
+import React, { useState, memo, useCallback } from "react";
 import useProducts from "../Store/Store";
 import Popup from "./Popup";
 
